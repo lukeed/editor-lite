@@ -1,6 +1,6 @@
 # editor-lite [![Build Status](https://travis-ci.org/lukeed/editor-lite.svg?branch=master)](https://travis-ci.org/lukeed/editor-lite)
 
-> My flawless module
+> The lightest WYSIWYG cross-browser editor. (IE9+)
 
 
 ## Install
@@ -13,9 +13,9 @@ $ npm install --save editor-lite
 ## Usage
 
 ```js
-const editorLite = require('editor-lite');
+const editor = require('editor-lite');
 
-editorLite('unicorns');
+editor('unicorns');
 //=> 'unicorns & rainbows'
 ```
 
