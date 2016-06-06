@@ -19,7 +19,13 @@
     "index.js"
   ],
   "keywords": [
-    ""
+    "content",
+    "contenteditable",
+    "editable",
+    "editor",
+    "lightweight",
+    "lite",
+    "wysiwyg"
   ],
   "dependencies": {},
   "devDependencies": {
