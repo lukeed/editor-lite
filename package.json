@@ -27,7 +27,9 @@
     "lite",
     "wysiwyg"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "dom-selection": "^0.2.1"
+  },
   "devDependencies": {
     "xo": "^0.14.0"
   }
