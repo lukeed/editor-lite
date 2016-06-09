@@ -16,8 +16,10 @@
     "build": "browserify src -o dist/editor-lite.js",
     "test": "xo"
   },
+  "main": "src/index.js",
   "files": [
-    "index.js"
+    "dist",
+    "src"
   ],
   "keywords": [
     "content",
