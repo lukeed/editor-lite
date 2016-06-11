@@ -29,9 +29,9 @@ function Editor(el, opts) {
 	this.opts = extend({
 		onBlur: noop,
 		onFocus: noop,
-		onKeyDown: noop,
-		onKeyUp: noop,
-		onKeyPress: noop,
+		onKeydown: noop,
+		onKeyup: noop,
+		onKeypress: noop,
 		onSelection: noop
 	}, opts || {});
 }
