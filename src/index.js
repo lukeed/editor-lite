@@ -5,6 +5,8 @@ var domsel = require('dom-selection');
 // Array prototype shortnames
 var slice = [].slice;
 
+var noop = function () {};
+
 /**
  * Shallow Extend
  * @param  {Object} tar
@@ -20,3 +22,19 @@ function extend(tar) {
 	});
 	return tar;
 }
+
+function Editor(el, opts) {
+	this.el = el;
+
+	this.opts = extend({
+		onBlur: noop,
+		onFocus: noop,
+		onKeyDown: noop,
+		onKeyUp: noop,
+		onKeyPress: noop,
+		onSelection: noop
+	}, opts || {});
+}
+
+
+window.Editor = Editor;
