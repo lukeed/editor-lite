@@ -13,10 +13,14 @@ $ npm install --save editor-lite
 ## Usage
 
 ```js
-const editor = require('editor-lite');
+const Editor = require('editor-lite');
+const item = document.getElementById('item');
 
-editor('unicorns');
-//=> 'unicorns & rainbows'
+const editor = new Editor(item, {
+  onKeyup: function (e, key, modifiers) {
+    // ...
+  }
+});
 ```
 
 
