@@ -36,5 +36,13 @@
   "devDependencies": {
     "browserify": "^13.0.1",
     "xo": "^0.14.0"
+  },
+  "xo": {
+    "envs": ["browser", "node", "amd"],
+    "rules": {
+      "no-unused-expressions": 1,
+      "wrap-iife": 0,
+      "curly": 1
+    }
   }
 }
