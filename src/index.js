@@ -4,6 +4,7 @@ var domsel = require('dom-selection');
 
 // Array prototype shortnames
 var slice = [].slice;
+var each = [].forEach;
 
 var noop = function () {};
 
@@ -23,6 +24,35 @@ function extend(tar) {
 	return tar;
 }
 
+/**
+ * Add an EventListener for event(s) on a Node.
+ * @param {Node} el
+ * @param {String} evts
+ * @param {Function} cb
+ */
+function on(el, evts, cb) {
+	each.call(evts.split(' '), function (evt) {
+		el.addEventListener(evt, cb);
+	});
+}
+
+/**
+ * Remove an EventListener for event(s) on a Node.
+ * @param {Node} el
+ * @param {String} evts
+ * @param {Function} cb
+ */
+function off(el, evts, cb) {
+	each.call(evts.split(' '), function (evt) {
+		el.removeEventListener(evt, cb);
+	});
+}
+
+/**
+ * Editor Class Constructor
+ * @param {Node} el
+ * @param {Object} opts
+ */
 function Editor(el, opts) {
 	this.el = el;
 
