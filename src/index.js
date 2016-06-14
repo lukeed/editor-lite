@@ -70,7 +70,38 @@ function Editor(el, opts) {
 		onKeypress: noop,
 		onSelection: noop
 	}, opts || {});
+
+	// attach event listeners
+	on(this.el, 'blur', this.onBlur.bind(this));
+	on(this.el, 'focus', this.onFocus.bind(this));
+	on(this.el, 'selection', this.onSelection.bind(this));
 }
 
+Editor.prototype = {
+	/**
+	 * Callback for `blur` event.
+	 * @param  {Event} e
+	 */
+	onBlur: function (e) {
+		this.opts.onBlur(e);
+	},
+
+	/**
+	 * Callback for `focus` event.
+	 * @param  {Event} e
+	 */
+	onFocus: function (e) {
+		this.opts.onFocus(e);
+	},
+
+	/**
+	 * Callback for the `selection` event.
+	 * @param  {Event} e
+	 */
+	onSelection: function (e) {
+		this.opts.onSelection(e);
+		console.log('inside selection');
+	}
+};
 
 window.Editor = Editor;
