@@ -2,9 +2,12 @@
 
 var domsel = require('dom-selection');
 
-// Array prototype shortnames
+// various shortnames
+var win = window;
+var doc = document;
 var slice = [].slice;
 var each = [].forEach;
+var attr = 'contentEditable';
 
 var noop = function () {};
 
@@ -54,8 +57,11 @@ function off(el, evts, cb) {
  * @param {Object} opts
  */
 function Editor(el, opts) {
-	this.el = el;
+	if (!attr in doc.body) {
+		throw new Error('Your browser does not support the `contenteditable` attribute. For more: http://caniuse.com/#feat=contenteditable');
+	}
 
+	this.el = el;
 	this.opts = extend({
 		onBlur: noop,
 		onFocus: noop,
