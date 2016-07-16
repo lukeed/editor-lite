@@ -68,7 +68,8 @@ function Editor(el, opts) {
 		onKeydown: noop,
 		onKeyup: noop,
 		onKeypress: noop,
-		onSelection: noop
+		onSelection: noop,
+		snapSelection: true
 	}, opts || {});
 
 	// attach event listeners
@@ -108,7 +109,10 @@ Editor.prototype = {
 	 * @todo accept a `sel`, use & pass it
 	 */
 	onSelection: function () {
-		//
+		// snap the seleciton?
+		this.opts.snapSelection && domsel.snapSelected();
+		// user callback
+		this.opts.onSelection();
 	}
 };
 
