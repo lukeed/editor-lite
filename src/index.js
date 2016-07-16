@@ -190,7 +190,7 @@ Editor.prototype = {
 	 */
 	hasSelection: function () {
 		var sel = domsel.getSelection();
-		return !domsel.isCollapsed(sel) && sel;
+		return !domsel.isCollapsed(sel) && domsel.isWithin(this.el, sel) && sel;
 	},
 };
 
