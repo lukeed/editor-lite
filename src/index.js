@@ -127,9 +127,9 @@ function Editor(el, opts) {
 	}, opts || {});
 
 	// attach event listeners
-	on(this.el, 'blur', this.onBlur.bind(this));
-	on(this.el, 'focus', this.onFocus.bind(this));
-	on(this.el, 'mouseup', this.onMouseup.bind(this));
+	on(el, 'blur', this.onBlur.bind(this));
+	on(el, 'focus', this.onFocus.bind(this));
+	on(el, 'mouseup', this.onMouseup.bind(this));
 
 	// debounced key listeners
 	var ms = this.opts.throttle;
