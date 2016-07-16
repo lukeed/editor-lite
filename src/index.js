@@ -91,6 +91,20 @@ function off(el, evts, cb) {
 }
 
 /**
+ * Format the Key{Down,Press,Up} event
+ * @param  {Event} e
+ * @return {Array}
+ */
+function keyEvent(e) {
+	return [e, {
+		alt: e.altKey,
+		ctrl: e.ctrlKey,
+		meta: e.metaKey || e.key === 'Meta',
+		shift: e.shiftKey
+	}];
+}
+
+/**
  * Editor Class Constructor
  * @param {Node} el
  * @param {Object} opts
