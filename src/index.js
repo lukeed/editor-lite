@@ -169,8 +169,8 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onMouseup: function () {
-		var sel = domsel.getSelection();
-		!domsel.isCollapsed(sel) && this.onSelection(sel);
+		var sel = this.hasSelection();
+		sel && this.onSelection(sel);
 	},
 
 	/**
@@ -182,7 +182,16 @@ Editor.prototype = {
 		this.opts.snapSelection && domsel.snapSelected(sel);
 		// user callback
 		this.opts.onSelection(sel);
-	}
+	},
+
+	/**
+	 * Does the Editor currently have an active Selection?
+	 * @return {Object|Boolean}
+	 */
+	hasSelection: function () {
+		var sel = domsel.getSelection();
+		return !domsel.isCollapsed(sel) && sel;
+	},
 };
 
 window.Editor = Editor;
