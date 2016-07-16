@@ -17,8 +17,9 @@ const Editor = require('editor-lite');
 const item = document.getElementById('item');
 
 const editor = new Editor(item, {
-  onKeyup: function (e, key, modifiers) {
-    // ...
+  onKeyup: function (e, modifiers) {
+    console.log(modifiers);
+    //=> {alt: false, ctrl: false, meta: false, shift: false}
   }
 });
 ```
