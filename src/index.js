@@ -100,19 +100,19 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onMouseup: function () {
-		// @todo: get the `sel`, pass it along
-		!domsel.isCollapsed() && this.onSelection();
+		var sel = domsel.getSelection();
+		!domsel.isCollapsed(sel) && this.onSelection(sel);
 	},
 
 	/**
 	 * Callback for when a `Selection` has been made.
-	 * @todo accept a `sel`, use & pass it
+	 * @param {Selection} sel  The active selection.
 	 */
-	onSelection: function () {
+	onSelection: function (sel) {
 		// snap the seleciton?
-		this.opts.snapSelection && domsel.snapSelected();
+		this.opts.snapSelection && domsel.snapSelected(sel);
 		// user callback
-		this.opts.onSelection();
+		this.opts.onSelection(sel);
 	}
 };
 
