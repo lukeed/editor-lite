@@ -74,7 +74,7 @@ function Editor(el, opts) {
 	// attach event listeners
 	on(this.el, 'blur', this.onBlur.bind(this));
 	on(this.el, 'focus', this.onFocus.bind(this));
-	on(this.el, 'selection', this.onSelection.bind(this));
+	on(this.el, 'mouseup', this.onMouseup.bind(this));
 }
 
 Editor.prototype = {
@@ -95,12 +95,20 @@ Editor.prototype = {
 	},
 
 	/**
-	 * Callback for the `selection` event.
+	 * Callback for the `mouseup` event.
 	 * @param  {Event} e
 	 */
-	onSelection: function (e) {
-		this.opts.onSelection(e);
-		console.log('inside selection');
+	onMouseup: function () {
+		// @todo: get the `sel`, pass it along
+		!domsel.isCollapsed() && this.onSelection();
+	},
+
+	/**
+	 * Callback for when a `Selection` has been made.
+	 * @todo accept a `sel`, use & pass it
+	 */
+	onSelection: function () {
+		//
 	}
 };
 
