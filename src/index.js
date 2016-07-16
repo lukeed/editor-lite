@@ -108,7 +108,8 @@ function Editor(el, opts) {
 		onKeyup: noop,
 		onKeypress: noop,
 		onSelection: noop,
-		snapSelection: true
+		snapSelection: true,
+		throttle: 250
 	}, opts || {});
 
 	// attach event listeners
