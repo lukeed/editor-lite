@@ -28,6 +28,45 @@ function extend(tar) {
 }
 
 /**
+ * Improved Debounce function
+ * @see https://github.com/rhysbrettbowen/debounce/blob/master/debounce.js
+ * @param  {Function} func
+ * @param  {Integer} wait  The milliseconds to wait.
+ * @return {Function}      The debounced version of func.
+ */
+function debounce(func, wait) {
+	// we need to save these in the closure
+	var self, args, time, timeout;
+
+	return function () {
+		// save details of latest call
+		self = this;
+		args = arguments;
+		time = Date.now();
+
+		// this is where the magic happens
+		var later = function () {
+			// how long ago was the last call?
+			var last = Date.now() - time;
+
+			// if latest call was < wait period, reset timeout
+			// else nullify the timer and run the latest
+			if (last < wait) {
+				timeout = setTimeout(later, wait - last);
+			} else {
+				timeout = null;
+				return func.apply(self, args);
+			}
+		};
+
+		// we only need to set the timer now if one isn't already running
+		if (!timeout) {
+			timeout = setTimeout(later, wait);
+		}
+	}
+}
+
+/**
  * Add an EventListener for event(s) on a Node.
  * @param {Node} el
  * @param {String} evts
