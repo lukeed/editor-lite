@@ -192,6 +192,22 @@ Editor.prototype = {
 		var sel = domsel.getSelection();
 		return !domsel.isCollapsed(sel) && domsel.isWithin(this.el, sel) && sel;
 	},
+
+	/**
+	 * Get the Selected HTML
+	 * @return {String}
+	 */
+	getSelectedHTML: function () {
+		return domsel.getHTML(this.hasSelection());
+	},
+
+	/**
+	 * Get the Selected Nodes
+	 * @return {Array}
+	 */
+	getSelectedNodes: function () {
+		return domsel.getNodes(this.hasSelection());
+	}
 };
 
 window.Editor = Editor;
