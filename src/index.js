@@ -116,6 +116,13 @@ function Editor(el, opts) {
 	on(this.el, 'blur', this.onBlur.bind(this));
 	on(this.el, 'focus', this.onFocus.bind(this));
 	on(this.el, 'mouseup', this.onMouseup.bind(this));
+
+	// debounced key listeners
+	var ms = this.opts.throttle;
+	var cb = this.onKeys.bind(this);
+	each.call(['keyup', 'keydown', 'keypress'], function (evt) {
+		on(el, evt, debounce(cb, ms));
+	});
 }
 
 Editor.prototype = {
@@ -133,6 +140,14 @@ Editor.prototype = {
 	 */
 	onFocus: function (e) {
 		this.opts.onFocus(e);
+	},
+
+	/**
+	 * Callback for `key{press,down,up}` events.
+	 * @param  {Event} e
+	 */
+	onKeys: function (e) {
+		this.opts['onK' + e.type.substr(1)].apply(this, keyEvent(e));
 	},
 
 	/**
