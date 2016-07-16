@@ -207,6 +207,42 @@ Editor.prototype = {
 	 */
 	getSelectedNodes: function () {
 		return domsel.getNodes(this.hasSelection());
+	},
+
+	/**
+	 * Set the Inner HTML contents.
+	 * @param {String} str
+	 */
+	setHTML: function (str) {
+
+	},
+
+	/**
+	 * Get the inner HTML contents.
+	 * @return {String}
+	 */
+	getHTML: function () {
+		return this.el.innerHTML;
+	},
+
+	cleanHTML: function (str) {
+
+	},
+
+	prettyHTML: function (str) {
+
+	},
+
+	minifyHTML: function (str) {
+
+	},
+
+	removeTags: function (nodes) {
+
+	},
+
+	removeStyles: function (nodes) {
+
 	}
 };
 
