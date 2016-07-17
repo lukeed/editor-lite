@@ -251,29 +251,32 @@ Editor.prototype = {
 	},
 
 	/**
-	 * Remove <script> tags from the HTML string.
-	 * @param  {String} str Inner HTML
+	 * Remove `script` tags from the HTML content.
 	 * @return {String}
 	 */
 	safeHTML: function () {
 		return this.getHTML().replace(/<script[^>]*>[\S\s]*?<\/script[^>]*>/ig, '');
 	},
 
+	/**
+	 * Remove unwanted newlines & duplicative spacing.
+	 * @return {String}
+	 */
 	cleanHTML: function () {
-
+		return this.getHTML()
+			.replace(/\n/g, '') // newline / carriage return
+			.replace(/[\t ]?&nbsp;+[\t ]?/gi, ' '); // &nbsp; duplicate space
 	},
 
 	/**
 	 * Remove the whitespace & tabs in between HTML tags.
-	 * @param  {String} str Inner HTML
 	 * @return {String}
 	 */
 	minifyHTML: function () {
 		return this.cleanHTML()
-			.replace(/\n/g, '') // newline / carriage return
-			.replace(/[\t ]+\</g, '<') // whitespace (space and tabs) before tags
-			.replace(/\>[\t ]+\</g, '><') // whitespace between tags
-			.replace(/\>[\t ]+$/g, '>'); // whitespace after tags
+			.replace(/[\t\t]+\</g, '<') // whitespace (space and tabs) before tags
+			.replace(/\>[\t\t]+\</g, '><') // whitespace between tags
+			.replace(/\>[\t\t]+$/g, '>'); // whitespace after tags
 	},
 
 	removeTags: function (nodes) {
