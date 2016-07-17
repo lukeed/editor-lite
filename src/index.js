@@ -259,12 +259,21 @@ Editor.prototype = {
 		return this.getHTML().replace(/<script[^>]*>[\S\s]*?<\/script[^>]*>/ig, '');
 	},
 
-	prettyHTML: function (str) {
+	cleanHTML: function () {
 
 	},
 
-	minifyHTML: function (str) {
-
+	/**
+	 * Remove the whitespace & tabs in between HTML tags.
+	 * @param  {String} str Inner HTML
+	 * @return {String}
+	 */
+	minifyHTML: function () {
+		return this.cleanHTML()
+			.replace(/\n/g, '') // newline / carriage return
+			.replace(/[\t ]+\</g, '<') // whitespace (space and tabs) before tags
+			.replace(/\>[\t ]+\</g, '><') // whitespace between tags
+			.replace(/\>[\t ]+$/g, '>'); // whitespace after tags
 	},
 
 	removeTags: function (nodes) {
