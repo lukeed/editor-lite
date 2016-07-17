@@ -7,6 +7,7 @@ var win = window;
 var doc = document;
 var slice = [].slice;
 var each = [].forEach;
+var acts = 'click touch';
 var attr = 'contentEditable';
 
 var noop = function () {};
@@ -126,6 +127,8 @@ function Editor(el, opts) {
 
 	this.el = el;
 	this.opts = extend({
+		airbar: false,
+		toolbar: false,
 		onBlur: noop,
 		onFocus: noop,
 		onKeydown: noop,
@@ -147,6 +150,16 @@ function Editor(el, opts) {
 	each.call(['keyup', 'keydown', 'keypress'], function (evt) {
 		on(el, evt, debounce(cb, ms));
 	});
+
+	// toolbar listeners
+	// @todo airbar?
+	if (this.opts.toolbar) {
+		var bcb = this.onBtnClick.bind(this);
+		var btns = slice.call(this.opts.toolbar.getElementsByTagName('button'));
+		each.call(btns, function (btn) {
+			on(btn, acts, bcb);
+		});
+	}
 }
 
 Editor.prototype = {
