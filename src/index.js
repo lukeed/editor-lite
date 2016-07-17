@@ -264,8 +264,8 @@ Editor.prototype = {
 	 */
 	cleanHTML: function () {
 		return this.getHTML()
-			.replace(/\n/g, '') // newline / carriage return
-			.replace(/[\t ]?&nbsp;+[\t ]?/gi, ' '); // &nbsp; duplicate space
+			.replace(/\n|<br>/g, '') // newline / carriage return
+			.replace(/&nbsp;/g, ' '); // &nbsp; ==> ' '
 	},
 
 	/**
@@ -276,7 +276,8 @@ Editor.prototype = {
 		return this.cleanHTML()
 			.replace(/[\t\t]+\</g, '<') // whitespace (space and tabs) before tags
 			.replace(/\>[\t\t]+\</g, '><') // whitespace between tags
-			.replace(/\>[\t\t]+$/g, '>'); // whitespace after tags
+			.replace(/\>[\t\t]+$/g, '>') // whitespace after tags
+			.replace(/\s\s+/g, ' '); // shrink multiple spaces
 	},
 
 	removeTags: function (nodes) {
