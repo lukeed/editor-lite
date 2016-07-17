@@ -10,6 +10,33 @@ var each = [].forEach;
 var acts = 'click touch';
 var attr = 'contentEditable';
 
+var cmds = {
+	'ul': ['insertUnorderedList'],
+	'ol': ['insertOrderedList'],
+	'u': ['underline', 1], // `1` = requires selection
+	'b': ['bold', 1],
+	'i': ['italic', 1],
+	'sub': ['subscript', 1],
+	'sup': ['superscript', 1],
+	'strike': ['strikeThrough', 1],
+	'center': ['justifyCenter'],
+	'right': ['justifyRight'],
+	'left': ['justifyLeft'],
+	'full': ['justifyFull'],
+	'out': ['outdent'],
+	'in': ['indent'],
+};
+// 'link' : ['createLink', true, 'url']
+// insertImage
+// insertHTML
+// removeFormat
+// unlink
+// foreColor
+// hiliteColor
+// backColor
+// fontName
+// fontSize
+
 var noop = function () {};
 
 /**
