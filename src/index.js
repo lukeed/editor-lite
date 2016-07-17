@@ -215,6 +215,22 @@ Editor.prototype = {
 	},
 
 	/**
+	 * Handler for toolbar buttons' `click`.
+	 * @param  {Event} e
+	 */
+	onBtnClick: function (e) {
+		e.preventDefault();
+		var btn = e.target;
+		var tag = btn.getAttribute('data-tag');
+		var cmd = cmds[tag]; // cmd info
+		if (!tag || !cmd) return;
+		// expand the caret if cmd requires a selection & non active
+		cmd[1] && !this.hasSelection() && this.expandSelection();
+		// run the doc command
+		execute(cmd[0]);
+	},
+
+	/**
 	 * Callback for the `mouseup` event.
 	 * @param  {Event} e
 	 */
