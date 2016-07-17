@@ -105,6 +105,16 @@ function keyEvent(e) {
 }
 
 /**
+ * Execute a Document Command
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
+ * @return {Boolean}     If was applied.
+ */
+function execute() {
+	var args = slice.call(arguments);
+	return args.length && doc.execCommand(args);
+}
+
+/**
  * Editor Class Constructor
  * @param {Node} el
  * @param {Object} opts
