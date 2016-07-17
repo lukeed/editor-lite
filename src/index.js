@@ -205,6 +205,8 @@ Editor.prototype = {
 		this.opts.snapSelection && domsel.snapSelected(sel);
 		// user callback
 		this.opts.onSelection(sel);
+		// trigger airbar
+		this.opts.airbar && this.showAirbar();
 	},
 
 	/**
@@ -266,6 +268,15 @@ Editor.prototype = {
 
 	removeStyles: function (nodes) {
 
+	},
+
+	showAirbar: function () {
+	},
+
+	hideAirbar: function () {
+	},
+
+	toggleAirbar: function () {
 	}
 };
 
