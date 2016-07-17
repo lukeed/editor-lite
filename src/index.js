@@ -262,6 +262,13 @@ Editor.prototype = {
 	},
 
 	/**
+	 * Expand the Selection/Caret's position to include entire word.
+	 */
+	expandSelection: function () {
+		domsel.expandToWord();
+	},
+
+	/**
 	 * Get the Selected HTML
 	 * @return {String}
 	 */
@@ -282,7 +289,7 @@ Editor.prototype = {
 	 * @param {String} str
 	 */
 	setHTML: function (str) {
-
+		this.el.innerHTML = str || '';
 	},
 
 	/**
