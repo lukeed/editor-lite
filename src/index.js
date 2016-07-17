@@ -250,8 +250,13 @@ Editor.prototype = {
 		return this.el.innerHTML;
 	},
 
-	cleanHTML: function (str) {
-
+	/**
+	 * Remove <script> tags from the HTML string.
+	 * @param  {String} str Inner HTML
+	 * @return {String}
+	 */
+	safeHTML: function () {
+		return this.getHTML().replace(/<script[^>]*>[\S\s]*?<\/script[^>]*>/ig, '');
 	},
 
 	prettyHTML: function (str) {
