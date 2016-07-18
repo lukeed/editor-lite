@@ -240,15 +240,7 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onBtnClick: function (e) {
-		e.preventDefault();
-		var btn = e.target;
-		var tag = btn.getAttribute('data-tag');
-		var cmd = cmds[tag]; // cmd info
-		if (!tag || !cmd) return;
-		// expand the caret if cmd requires a selection & non active
-		cmd[1] && !this.hasSelection() && this.expandSelection();
-		// run the doc command
-		execute(cmd[0]);
+		this.runCommand(e.target.getAttribute('data-tag'), e);
 	},
 
 	/**
@@ -287,6 +279,23 @@ Editor.prototype = {
 	 */
 	expandSelection: function () {
 		domsel.expandToWord();
+	},
+
+	/**
+	 * Execute a Doc.Command by its abbreviation (key).
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
+	 * @param  {String} str  The command's abbreviated key.
+	 * @param  {Event}  e    An optional event to cancel.
+	 * @return {Boolean}     The command was run successfully.
+	 */
+	runCommand: function (str, e) {
+		var cmd = cmds[str];
+		if (!str || !cmd) return;
+		e && e.preventDefault();
+		// expand the caret if cmd requires a selection & non active
+		cmd[1] && !this.hasSelection() && this.expandSelection();
+		// run the command
+		execute(cmd[0]);
 	},
 
 	/**
