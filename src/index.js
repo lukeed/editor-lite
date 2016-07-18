@@ -3,7 +3,6 @@
 var domsel = require('dom-selection');
 
 // various shortnames
-var win = window;
 var doc = document;
 var slice = [].slice;
 var each = [].forEach;
@@ -24,7 +23,7 @@ var cmds = {
 	left: ['justifyLeft'],
 	full: ['justifyFull'],
 	out: ['outdent'],
-	in: ['indent'],
+	in: ['indent']
 };
 // 'link' : ['createLink', true, 'url']
 // insertImage
@@ -91,7 +90,7 @@ function debounce(func, wait) {
 		if (!timeout) {
 			timeout = setTimeout(later, wait);
 		}
-	}
+	};
 }
 
 /**
@@ -148,7 +147,7 @@ function execute() {
  * @param {Object} opts
  */
 function Editor(el, opts) {
-	if (!attr in doc.body) {
+	if (!(attr in doc.body)) {
 		throw new Error('Your browser does not support the `contenteditable` attribute. For more: http://caniuse.com/#feat=contenteditable');
 	}
 

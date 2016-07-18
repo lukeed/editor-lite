@@ -46,6 +46,7 @@
     "rules": {
       "no-unused-expressions": 1,
       "wrap-iife": 0,
+      "one-var": 1,
       "curly": 1
     }
   }
