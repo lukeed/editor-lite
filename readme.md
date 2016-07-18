@@ -14,9 +14,17 @@ $ npm install --save editor-lite
 
 ```js
 const Editor = require('editor-lite');
+const bar = document.getElementById('bar');
 const item = document.getElementById('item');
 
 const editor = new Editor(item, {
+  toolbar: bar,
+  onFocus: function () {
+	bar.classList.add('toolbar__active');
+  },
+  onBlur: function () {
+	bar.classList.remove('toolbar__active');
+  },
   onKeyup: function (e, modifiers) {
     console.log(modifiers);
     //=> {alt: false, ctrl: false, meta: false, shift: false}
@@ -27,22 +35,7 @@ const editor = new Editor(item, {
 
 ## API
 
-### editorLite(input, [options])
-
-#### input
-
-Type: `string`
-
-Lorem ipsum.
-
-#### options
-
-##### foo
-
-Type: `boolean`<br>
-Default: `false`
-
-Lorem ipsum.
+crickets
 
 
 ## License
