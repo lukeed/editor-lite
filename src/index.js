@@ -185,10 +185,12 @@ function Editor(el, opts) {
 		throttle: 250
 	}, opts || {});
 
+	var self = this;
+
 	// attach event listeners
-	on(el, 'blur', this.onBlur.bind(this));
-	on(el, 'focus', this.onFocus.bind(this));
-	on(el, 'mouseup', this.onMouseup.bind(this));
+	each.call(['blur', 'focus', 'mouseup', 'keydown'], function (evt) {
+		on(el, evt, self[funk(evt)].bind(self));
+	});
 
 	// debounced key listeners
 	var ms = this.opts.throttle;
