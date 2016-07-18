@@ -324,9 +324,9 @@ Editor.prototype = {
 	 */
 	minifyHTML: function () {
 		return this.cleanHTML()
-			.replace(/[\t\t]+\</g, '<') // whitespace (space and tabs) before tags
-			.replace(/\>[\t\t]+\</g, '><') // whitespace between tags
-			.replace(/\>[\t\t]+$/g, '>') // whitespace after tags
+			.replace(/[\t\t]+</g, '<') // whitespace (space and tabs) before tags
+			.replace(/>[\t\t]+</g, '><') // whitespace between tags
+			.replace(/>[\t\t]+$/g, '>') // whitespace after tags
 			.replace(/\s\s+/g, ' '); // shrink multiple spaces
 	},
 
