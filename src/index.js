@@ -193,10 +193,10 @@ function Editor(el, opts) {
 	});
 
 	// debounced key listeners
-	var ms = this.opts.throttle;
-	var cb = this.onKeys.bind(this);
 	each.call(['keyup', 'keydown', 'keypress'], function (evt) {
-		on(el, evt, debounce(cb, ms));
+		on(el, evt, debounce(function (e) {
+			self.opts[funk(e.type)].apply(self, keyEvent(e));
+		}, self.opts.throttle));
 	});
 
 	// toolbar listeners
