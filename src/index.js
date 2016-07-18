@@ -9,6 +9,20 @@ var each = [].forEach;
 var acts = 'click touch';
 var attr = 'contentEditable';
 
+var keys = {
+	u: 'u',
+	b: 'b',
+	i: 'i',
+	']': 'in',
+	'[': 'out',
+	// shift + code
+	s55: 'ol',
+	s56: 'ul',
+	s69: 'center',
+	s76: 'left',
+	s82: 'right'
+};
+
 var cmds = {
 	ul: ['insertUnorderedList'],
 	ol: ['insertOrderedList'],
@@ -228,11 +242,16 @@ Editor.prototype = {
 	},
 
 	/**
-	 * Callback for `key{press,down,up}` events.
+	 * On `keydown` event, check if a keybind was attempted.
+	 * If yes & found, will run the associated command.
 	 * @param  {Event} e
 	 */
-	onKeys: function (e) {
-		this.opts['onK' + e.type.substr(1)].apply(this, keyEvent(e));
+	onKeydown: function (e) {
+		if (e.metaKey && e.key !== 'Meta') {
+			// find a shortcut w/ this key
+			var k = e.shiftKey ? ('s' + e.keyCode) : e.key;
+			this.runCommand(keys[k], e);
+		}
 	},
 
 	/**
@@ -361,11 +380,9 @@ Editor.prototype = {
 	},
 
 	removeTags: function (nodes) {
-
 	},
 
 	removeStyles: function (nodes) {
-
 	},
 
 	showAirbar: function () {
