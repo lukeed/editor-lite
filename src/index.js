@@ -94,6 +94,24 @@ function debounce(func, wait) {
 }
 
 /**
+ * Capitalize a string. Assumes gives lowercase.
+ * @param  {String} str
+ * @return {String}
+ */
+function capitalize(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/**
+ * Generate a function name from string.
+ * @param  {String} str
+ * @return {String}
+ */
+function funk(str) {
+	return 'on' + capitalize(str);
+}
+
+/**
  * Add an EventListener for event(s) on a Node.
  * @param {Node} el
  * @param {String} evts
