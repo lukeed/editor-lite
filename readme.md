@@ -1,6 +1,6 @@
 # editor-lite [![Build Status](https://travis-ci.org/lukeed/editor-lite.svg?branch=master)](https://travis-ci.org/lukeed/editor-lite)
 
-> The lightest WYSIWYG cross-browser editor. (IE9+)
+> (WIP) The lightest WYSIWYG cross-browser editor. (IE9+)
 
 
 ## Install
