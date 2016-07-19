@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#bar {margin-bottom: 20px;}
+		#bar button {padding-right: 20px;}
+	</style>
+</head>
+<body>
+	<input id="url" name="url" value="">
+	<div id="bar">
+		<button data-tag="b">Bold</button>
+		<button data-tag="i">Italic</button>
+		<button data-tag="u">Underline</button>
+		<button data-tag="a" data-val="[0, 'google.com']">Link</button>
+		<button data-tag="ul">UL</button>
+		<button data-tag="ol">OL</button>
+		<button>fake</button>
+	</div>
+
+	<div id="el" contenteditable="true">
+		<p>Hello <b>the</b>re!</p>
+		<p>How <em>are</em> you &nbsp; do<b>ing tod</b>ay?</p>
+	</div>
+
+	<script src="dist/editor-lite.js"></script>
+	<script>
+		var doc = document;
+		var el = doc.getElementById('el');
+		var bar = doc.getElementById('bar');
+
+		var editor = new Editor(el, {
+			toolbar: bar,
+			onKeyup: function (e, mods) {
+				console.log('inside keyup');
+			},
+			onKeydown: function (e, mods) {
+				e.preventDefault();
+				console.log('inside keydown');
+			},
+			onKeypress: function (e, mods) {
+				console.log('inside onKeypress', mods);
+			}
+		});
+	</script>
+</body>
+</html>
