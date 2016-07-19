@@ -30,6 +30,7 @@ var cmds = {
 	u: ['underline', 1], // `1` = requires selection
 	b: ['bold', 1],
 	i: ['italic', 1],
+	a : ['createLink', 1],
 	sub: ['subscript', 1],
 	sup: ['superscript', 1],
 	strike: ['strikeThrough', 1],
@@ -40,7 +41,6 @@ var cmds = {
 	out: ['outdent'],
 	in: ['indent']
 };
-// 'link' : ['createLink', true, 'url']
 // insertImage
 // insertHTML
 // removeFormat
@@ -260,7 +260,8 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onBtnClick: function (e) {
-		this.runCommand(e.target.getAttribute('data-tag'), e);
+		var tag = e.target.getAttribute('data-tag');
+		tag === 'a' ? console.log('handle link') : this.runCommand(tag, e);
 	},
 
 	/**
@@ -304,18 +305,23 @@ Editor.prototype = {
 	/**
 	 * Execute a Doc.Command by its abbreviation (key).
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
-	 * @param  {String} str  The command's abbreviated key.
+	 * @param  {Object} cmd  The command block.
 	 * @param  {Event}  e    An optional event to cancel.
 	 * @return {Boolean}     The command was run successfully.
 	 */
-	runCommand: function (str, e) {
-		var cmd = cmds[str];
-		if (!str || !cmd) return;
+	runCommand: function (cmd, e) {
+		if (!cmd) return;
+		// found cmd, cancel native handler
 		e && e.preventDefault();
 		// expand the caret if cmd requires a selection & non active
 		cmd[1] && !this.hasSelection() && this.expandSelection();
 		// run the command
 		execute(cmd[0]);
+	},
+
+	insertLink: function (e) {
+		e.preventDefault();
+		prompt()
 	},
 
 	/**
