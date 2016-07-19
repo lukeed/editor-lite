@@ -19,6 +19,7 @@ var keys = {
 	s55: 'ol',
 	s56: 'ul',
 	s69: 'center',
+	s74: 'full',
 	s76: 'left',
 	s82: 'right'
 };
