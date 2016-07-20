@@ -37,6 +37,15 @@ const editor = new Editor(item, {
 
 crickets
 
+## ToDo's
+
+- [ ] Link, Image, iFrame handlers
+- [ ] Add `autoSave` (int) & `onSave` (function) options
+- [ ] Airbar positioning
+- [ ] Include bare minimum SASS
+- [ ] Add (pretty) demo
+- [ ] Add `API` documentation
+- [ ] Add headers for AMD/Common/Browser exports
 
 ## License
 
