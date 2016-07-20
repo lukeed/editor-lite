@@ -8,6 +8,7 @@ var slice = [].slice;
 var each = [].forEach;
 var acts = 'click touch';
 var evSave = 'editor_save';
+var evAuto = 'editor_autosave';
 var attr = 'contentEditable';
 
 var keys = {
@@ -190,6 +191,7 @@ function Editor(el, opts) {
 	this.el = el;
 	this.opts = extend({
 		airbar: false,
+		autoSave: 0,
 		toolbar: false,
 		onBlur: noop,
 		onFocus: noop,
@@ -219,6 +221,13 @@ function Editor(el, opts) {
 	// `save` listener
 	var cb = this.opts.onSave.bind(this);
 	on(el, evSave, cb);
+
+	var save;
+	// `autosave` listener
+	if (save = this.opts.autoSave) {
+		// `autosave` evt listener
+		on(el, evAuto, debounce(cb, save));
+	}
 
 	// toolbar listeners
 	var btns = [];
