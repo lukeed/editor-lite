@@ -7,8 +7,6 @@ var doc = document;
 var slice = [].slice;
 var each = [].forEach;
 var acts = 'click touch';
-var evSave = 'editor_save';
-var evAuto = 'editor_autosave';
 var attr = 'contentEditable';
 
 var keys = {
@@ -219,18 +217,22 @@ function Editor(el, opts) {
 		}, self.opts.throttle));
 	});
 
-	// `save` listener
-	var cb = this.opts.onSave.bind(this);
-	on(el, evSave, cb);
+	// `save` & `sync` listeners
+	each.call(['save', 'sync'], function (evt) {
+		var cb = self.opts[funk(evt)].bind(self);
+		var op = 'auto' + capitalize(evt);
+		var ms = self.opts[op]; // throttle (ms)
 
-	// `autosave` listener
-	var save = this.opts.autoSave;
-	if (save) {
-		// lower limit for autosave's throttle: 1500ms
-		save = this.opts.autoSave = save && Math.max(save, 1500);
-		// `autosave` evt listener
-		on(el, evAuto, debounce(cb, save));
-	}
+		// raw listener
+		on(el, 'editor_' + evt, cb);
+
+		if (ms) {
+			// enforce a lower limit for throttling: 1500ms
+			ms = self.opts[op] = Math.max(ms, 1500);
+			// debounced `editor_auto(save|sync)` listener
+			on(el, 'editor_auto' + evt, debounce(cb, ms));
+		}
+	});
 
 	// toolbar listeners
 	var btns = [];
