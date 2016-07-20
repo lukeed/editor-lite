@@ -305,12 +305,13 @@ Editor.prototype = {
 	/**
 	 * Execute a Doc.Command by its abbreviation (key).
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
-	 * @param  {Object} cmd  The command block.
+	 * @param  {String} tag  The command block's key/tag name.
 	 * @param  {Event}  e    An optional event to cancel.
 	 * @return {Boolean}     The command was run successfully.
 	 */
-	runCommand: function (cmd, e) {
-		if (!cmd) return;
+	runCommand: function (tag, e) {
+		var cmd = cmds[tag];
+		if (!tag || !cmd) return;
 		// found cmd, cancel native handler
 		e && e.preventDefault();
 		// expand the caret if cmd requires a selection & non active
