@@ -222,9 +222,11 @@ function Editor(el, opts) {
 	var cb = this.opts.onSave.bind(this);
 	on(el, evSave, cb);
 
-	var save;
 	// `autosave` listener
-	if (save = this.opts.autoSave) {
+	var save = this.opts.autoSave;
+	if (save) {
+		// lower limit for autosave's throttle: 1500ms
+		save = this.opts.autoSave = save && Math.max(save, 1500);
 		// `autosave` evt listener
 		on(el, evAuto, debounce(cb, save));
 	}
