@@ -200,6 +200,7 @@ function Editor(el, opts) {
 		onKeypress: noop,
 		onSelection: noop,
 		onSave: noop,
+		onSync: noop,
 		snapSelection: true,
 		throttle: 250
 	}, opts || {});
@@ -347,6 +348,13 @@ Editor.prototype = {
 	 */
 	save: function () {
 		this.emit('save');
+	},
+
+	/**
+	 * Sync the contents with an input.
+	 */
+	sync: function () {
+		this.emit('sync');
 	},
 
 	/**
