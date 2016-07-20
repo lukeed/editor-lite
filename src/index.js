@@ -277,8 +277,9 @@ Editor.prototype = {
 			this.runCommand(keys[k], e);
 		}
 
-		// if autosaving, emit autosave
+		// if auto(sav|sync)ing, emit event
 		this.opts.autoSave && this.emit('autosave');
+		this.opts.autoSync && this.emit('autosync');
 	},
 
 	/**
