@@ -311,6 +311,18 @@ Editor.prototype = {
 	},
 
 	/**
+	 * Emit an event.
+	 * @param {String} name  The event name.
+	 */
+	emit: function (name) {
+		if (!name) return;
+		var en = 'editor_' + name;
+		var ev = doc.createEvent('Event');
+		ev.initEvent(en, 1, 1);
+		this.el.dispatchEvent(ev);
+	},
+
+	/**
 	 * Execute a Doc.Command by its abbreviation (key).
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
 	 * @param  {String} tag  The command block's key/tag name.
