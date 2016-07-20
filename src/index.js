@@ -190,6 +190,7 @@ function Editor(el, opts) {
 	this.opts = extend({
 		airbar: false,
 		toolbar: false,
+		input: false,
 		onBlur: noop,
 		onFocus: noop,
 		onKeydown: noop,
@@ -355,6 +356,8 @@ Editor.prototype = {
 	 * Sync the contents with an input.
 	 */
 	sync: function () {
+		var el = this.opts.input;
+		el && (el.value = this.minifyHTML());
 		this.emit('sync');
 	},
 
