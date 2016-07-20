@@ -30,7 +30,7 @@ var cmds = {
 	u: ['underline', 1], // `1` = requires selection
 	b: ['bold', 1],
 	i: ['italic', 1],
-	a : ['createLink', 1],
+	a: ['createLink', 1],
 	sub: ['subscript', 1],
 	sup: ['superscript', 1],
 	strike: ['strikeThrough', 1],
@@ -144,11 +144,11 @@ function on(el, evts, cb) {
  * @param {String} evts
  * @param {Function} cb
  */
-function off(el, evts, cb) {
-	each.call(evts.split(' '), function (evt) {
-		el.removeEventListener(evt, cb);
-	});
-}
+// function off(el, evts, cb) {
+// 	each.call(evts.split(' '), function (evt) {
+// 		el.removeEventListener(evt, cb);
+// 	});
+// }
 
 /**
  * Format the Key{Down,Press,Up} event
@@ -397,10 +397,10 @@ Editor.prototype = {
 			.replace(/\s\s+/g, ' '); // shrink multiple spaces
 	},
 
-	removeTags: function (nodes) {
+	removeTags: function () {
 	},
 
-	removeStyles: function (nodes) {
+	removeStyles: function () {
 	},
 
 	showAirbar: function () {

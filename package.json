@@ -45,6 +45,7 @@
     "envs": ["browser", "node", "amd"],
     "rules": {
       "no-unused-expressions": 1,
+      "quote-props": 1,
       "wrap-iife": 0,
       "one-var": 1,
       "curly": 1
