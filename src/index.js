@@ -232,6 +232,7 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onBlur: function (e) {
+		this.hideAirbar();
 		this.opts.onBlur(e);
 	},
 
@@ -271,7 +272,8 @@ Editor.prototype = {
 	 */
 	onMouseup: function () {
 		var sel = this.hasSelection();
-		sel && this.onSelection(sel);
+		// hide airbar if no selection
+		sel ? this.onSelection(sel) : this.hideAirbar();
 	},
 
 	/**
