@@ -215,14 +215,15 @@ function Editor(el, opts) {
 	});
 
 	// toolbar listeners
-	// @todo airbar?
-	if (this.opts.toolbar) {
-		var bcb = this.onBtnClick.bind(this);
-		var btns = slice.call(this.opts.toolbar.getElementsByTagName('button'));
-		each.call(btns, function (btn) {
-			on(btn, acts, bcb);
-		});
-	}
+	var btns = [];
+	each.call([this.opts.toolbar, this.opts.airbar], function (el) {
+		el && (btns = btns.concat(slice.call(el.getElementsByTagName('button'))));
+	});
+
+	var cb = this.onBtnClick.bind(this);
+	each.call(btns, function (btn) {
+		on(btn, acts, cb);
+	});
 }
 
 Editor.prototype = {
