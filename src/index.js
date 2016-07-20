@@ -394,12 +394,18 @@ Editor.prototype = {
 	},
 
 	showAirbar: function () {
+		this.airbar && this.airbar.classList.add('active');
+		this.airActive = true;
 	},
 
 	hideAirbar: function () {
+		this.airbar && this.airbar.classList.remove('active');
+		this.airActive = false;
 	},
 
 	toggleAirbar: function () {
+		var act = this.airActive ? 'hide' : 'show';
+		this[act + 'Airbar']();
 	}
 };
 
