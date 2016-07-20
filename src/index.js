@@ -7,6 +7,7 @@ var doc = document;
 var slice = [].slice;
 var each = [].forEach;
 var acts = 'click touch';
+var evSave = 'editor_save';
 var attr = 'contentEditable';
 
 var keys = {
@@ -196,6 +197,7 @@ function Editor(el, opts) {
 		onKeyup: noop,
 		onKeypress: noop,
 		onSelection: noop,
+		onSave: noop,
 		snapSelection: true,
 		throttle: 250
 	}, opts || {});
@@ -214,15 +216,19 @@ function Editor(el, opts) {
 		}, self.opts.throttle));
 	});
 
+	// `save` listener
+	var cb = this.opts.onSave.bind(this);
+	on(el, evSave, cb);
+
 	// toolbar listeners
 	var btns = [];
 	each.call([this.opts.toolbar, this.opts.airbar], function (el) {
 		el && (btns = btns.concat(slice.call(el.getElementsByTagName('button'))));
 	});
 
-	var cb = this.onBtnClick.bind(this);
+	var bcb = this.onBtnClick.bind(this);
 	each.call(btns, function (btn) {
-		on(btn, acts, cb);
+		on(btn, acts, bcb);
 	});
 }
 
