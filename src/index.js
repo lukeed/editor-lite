@@ -271,6 +271,9 @@ Editor.prototype = {
 			var k = e.shiftKey ? ('s' + e.keyCode) : e.key;
 			this.runCommand(keys[k], e);
 		}
+
+		// if autosaving, emit autosave
+		this.opts.autoSave && this.emit('autosave');
 	},
 
 	/**
