@@ -263,7 +263,11 @@ Editor.prototype = {
 	 */
 	onBtnClick: function (e) {
 		var tag = e.target.getAttribute('data-tag');
-		tag === 'a' ? console.log('handle link') : this.runCommand(tag, e);
+		switch (tag) {
+			case 'a': return this.insertLink();
+			case 'img': return this.insertImage();
+			default: this.runCommand(tag, e);
+		}
 	},
 
 	/**
@@ -323,9 +327,12 @@ Editor.prototype = {
 		execute(cmd[0]);
 	},
 
-	insertLink: function (e) {
-		e.preventDefault();
-		prompt()
+	insertLink: function () {
+		console.log('inside insertLink');
+	},
+
+	insertImage: function () {
+		console.log('inside insertImage');
 	},
 
 	/**
