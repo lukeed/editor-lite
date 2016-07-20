@@ -40,7 +40,8 @@ crickets
 ## ToDo's
 
 - [ ] Link, Image, iFrame handlers
-- [ ] Add `autoSave` (int) & `onSave` (function) options
+- [x] Add `autoSave` (int), `save` (fn), and `onSave` (fn)
+- [x] Add `autoSync` (int), `sync` (fn), and `onSync` (fn)
 - [ ] Airbar positioning
 - [ ] Include bare minimum SASS
 - [ ] Add (pretty) demo
