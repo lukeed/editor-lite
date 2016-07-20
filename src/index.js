@@ -286,7 +286,7 @@ Editor.prototype = {
 		// user callback
 		this.opts.onSelection(sel);
 		// trigger airbar
-		this.opts.airbar && this.showAirbar();
+		this.showAirbar();
 	},
 
 	/**
@@ -397,13 +397,19 @@ Editor.prototype = {
 	},
 
 	showAirbar: function () {
-		this.airbar && this.airbar.classList.add('active');
-		this.airActive = true;
+		var bar = this.opts.airbar;
+		if (bar && !this.airActive) {
+			bar.classList.add('active');
+			this.airActive = true;
+		}
 	},
 
 	hideAirbar: function () {
-		this.airbar && this.airbar.classList.remove('active');
-		this.airActive = false;
+		var bar = this.opts.airbar;
+		if (bar && this.airActive) {
+			bar.classList.remove('active');
+			this.airActive = false;
+		}
 	},
 
 	toggleAirbar: function () {
