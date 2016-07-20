@@ -323,6 +323,13 @@ Editor.prototype = {
 	},
 
 	/**
+	 * Emit the `editor_save` event to trigger `onSave()`
+	 */
+	save: function () {
+		this.emit('save');
+	},
+
+	/**
 	 * Execute a Doc.Command by its abbreviation (key).
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
 	 * @param  {String} tag  The command block's key/tag name.
