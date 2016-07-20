@@ -241,6 +241,7 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onFocus: function (e) {
+		this.hasSelection() && this.showAirbar();
 		this.opts.onFocus(e);
 	},
 
