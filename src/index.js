@@ -219,18 +219,19 @@ function Editor(el, opts) {
 
 	// `save` & `sync` listeners
 	each.call(['save', 'sync'], function (evt) {
-		var cb = self.opts[funk(evt)].bind(self);
 		var op = 'auto' + capitalize(evt);
 		var ms = self.opts[op]; // throttle (ms)
 
 		// raw listener
-		on(el, 'editor_' + evt, cb);
+		on(el, 'editor_' + evt, self.opts[funk(evt)].bind(self));
 
 		if (ms) {
 			// enforce a lower limit for throttling: 1500ms
 			ms = self.opts[op] = Math.max(ms, 1500);
 			// debounced `editor_auto(save|sync)` listener
-			on(el, 'editor_auto' + evt, debounce(cb, ms));
+			// call the method verb ==> verb handler
+			// eg: 'autosave' + debounce( this.save() ) = this.opts.onSave
+			on(el, 'editor_auto' + evt, debounce(self[evt].bind(self), ms));
 		}
 	});
 
