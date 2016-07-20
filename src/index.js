@@ -404,6 +404,9 @@ Editor.prototype = {
 	removeStyles: function () {
 	},
 
+	/**
+	 * Show the Airbar, if set & inactive.
+	 */
 	showAirbar: function () {
 		var bar = this.opts.airbar;
 		if (bar && !this.airActive) {
@@ -412,6 +415,9 @@ Editor.prototype = {
 		}
 	},
 
+	/**
+	 * Hide the Airbar, if set & active.
+	 */
 	hideAirbar: function () {
 		var bar = this.opts.airbar;
 		if (bar && this.airActive) {
@@ -420,6 +426,9 @@ Editor.prototype = {
 		}
 	},
 
+	/**
+	 * Toggle the Airbar visibility.
+	 */
 	toggleAirbar: function () {
 		var act = this.airActive ? 'hide' : 'show';
 		this[act + 'Airbar']();
