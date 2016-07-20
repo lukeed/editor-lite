@@ -189,7 +189,6 @@ function Editor(el, opts) {
 	this.el = el;
 	this.opts = extend({
 		airbar: false,
-		autoSave: 0,
 		toolbar: false,
 		onBlur: noop,
 		onFocus: noop,
