@@ -48,6 +48,16 @@ crickets
 - [ ] Add `API` documentation
 - [ ] Add headers for AMD/Common/Browser exports
 
+## Roadmap
+
+The term `extension` refers to an optional, accompanying file. Features should be opt-in, which is better than opt-out (from a lightweight POV).
+
+- Markdown extension. (includes md ==> html preview)
+- Airbar as an extension?
+- Handle image uploads directly. ([uppy](http://uppy.io/examples/dragdrop/index.html) or dropzone or ?)
+- iFrame extension
+- Tables extension
+
 ## License
 
 MIT © [Luke Edwards](https://lukeed.com)
