@@ -13,9 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build": "browserify src -o dist/editor-lite.js",
-    "minify": "browserify src -t uglifyify | uglifyjs -c > dist/editor-lite.min.js",
-    "release": "npm run build && npm run minify",
+    "build": "webpack src -p dist/editor-lite.min.js",
     "test": "xo"
   },
   "main": "src/index.js",
@@ -36,9 +34,7 @@
     "dom-selection": "^0.3.0"
   },
   "devDependencies": {
-    "browserify": "^13.0.1",
-    "uglify-js": "^2.7.0",
-    "uglifyify": "^3.0.2",
+    "webpack": "^1.13.1",
     "xo": "^0.14.0"
   },
   "xo": {
