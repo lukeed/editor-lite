@@ -20,10 +20,10 @@ const item = document.getElementById('item');
 const editor = new Editor(item, {
   toolbar: bar,
   onFocus: function () {
-	bar.classList.add('toolbar__active');
+    bar.classList.add('toolbar__active');
   },
   onBlur: function () {
-	bar.classList.remove('toolbar__active');
+    bar.classList.remove('toolbar__active');
   },
   onKeyup: function (e, modifiers) {
     console.log(modifiers);
