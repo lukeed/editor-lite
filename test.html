@@ -18,19 +18,27 @@
 		<button>fake</button>
 	</div>
 
-	<div id="el" contenteditable="true">
-		<p>Hello <b>the</b>re!</p>
-		<p>How <em>are</em> you &nbsp; do<b>ing tod</b>ay?</p>
-	</div>
+	<form>
+		<div id="el" name="test" contenteditable="true">
+			<p>Hello <b>the</b>re!</p>
+			<p>How <em>are</em> you &nbsp; do<b>ing tod</b>ay?</p>
+		</div>
 
-	<script src="dist/editor-lite.js"></script>
+		<textarea id="text"></textarea>
+	</form>
+
+	<script src="dist/editor-lite.min.js"></script>
 	<script>
 		var doc = document;
 		var el = doc.getElementById('el');
 		var bar = doc.getElementById('bar');
+		var text = doc.getElementById('text');
 
 		var editor = new Editor(el, {
-			toolbar: bar,
+			// toolbar: bar,
+			airbar: bar,
+			input: text,
+			autoSync: 100,
 			onKeyup: function (e, mods) {
 				console.log('inside keyup');
 			},
@@ -40,6 +48,12 @@
 			},
 			onKeypress: function (e, mods) {
 				console.log('inside onKeypress', mods);
+			},
+			onSave: function () {
+				console.log('inside onsave');
+			},
+			onSync: function () {
+				console.log('inside onSync');
 			}
 		});
 	</script>
