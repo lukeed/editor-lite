@@ -253,6 +253,7 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onBlur: function (e) {
+		this.sync();
 		this.hideAirbar();
 		this.opts.onBlur(e);
 	},
