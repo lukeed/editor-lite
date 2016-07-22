@@ -1,0 +1,26 @@
+{
+  "name": "editor-lite",
+  "description": "The lightest WYSIWYG cross-browser editor. (IE9+)",
+  "main": "dist/editor-lite.min.js",
+  "authors": [
+    "Luke Edwards <luke@lukeed.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "content",
+    "contenteditable",
+    "editable",
+    "editor",
+    "lightweight",
+    "lite",
+    "wysiwyg"
+  ],
+  "homepage": "https://github.com/lukeed/editor-lite",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
