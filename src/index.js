@@ -245,6 +245,8 @@ function Editor(el, opts) {
 	each.call(btns, function (btn) {
 		on(btn, acts, bcb);
 	});
+
+	self.buttons = btns;
 }
 
 Editor.prototype = {
@@ -253,6 +255,9 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onBlur: function (e) {
+		if (this.buttons.indexOf(e.relatedTarget) !== -1) {
+			return false;
+		}
 		this.sync();
 		this.hideAirbar();
 		this.opts.onBlur(e);
