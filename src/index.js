@@ -171,7 +171,7 @@ function keyEvent(e) {
  */
 function execute() {
 	var args = slice.call(arguments);
-	return args.length && doc.execCommand(args);
+	return args.length && doc.execCommand.apply(doc, args);
 }
 
 /**
