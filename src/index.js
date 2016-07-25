@@ -491,11 +491,11 @@ Editor.prototype = {
 			.replace(/\s\s+/g, ' '); // shrink multiple spaces
 	},
 
-	removeTags: function () {
-	},
+	// removeTags: function () {
+	// },
 
-	removeStyles: function () {
-	},
+	// removeStyles: function () {
+	// },
 
 	/**
 	 * Show the Airbar, if set & inactive.
