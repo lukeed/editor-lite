@@ -7,7 +7,8 @@ var doc = document;
 var slice = [].slice;
 var each = [].forEach;
 var acts = 'click touch';
-var attr = 'contentEditable';
+
+var keyID = 'keyIdentifier';
 var nodeType = 'nodeName';
 var nodeParent = 'parentNode';
 
@@ -161,7 +162,7 @@ function keyEvent(e) {
 	return [e, {
 		alt: e.altKey,
 		ctrl: e.ctrlKey,
-		meta: e.metaKey || e.key === 'Meta',
+		meta: e.metaKey || e[keyID] === 'Meta',
 		shift: e.shiftKey
 	}];
 }
@@ -280,7 +281,7 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onKeydown: function (e) {
-		if (e.metaKey && e.key !== 'Meta') {
+		if (e.metaKey && e[keyID] !== 'Meta') {
 			// find a shortcut w/ this key
 			var k = e.shiftKey ? ('s' + e.keyCode) : e.key;
 			this.runCommand(keys[k], e);
