@@ -278,6 +278,7 @@ Editor.prototype = {
 		if (this.buttons.indexOf(e.relatedTarget) !== -1) {
 			return false;
 		}
+		this.setHTML(this.cleanHTML());
 		this.sync();
 		this.hideAirbar();
 		this.opts.onBlur(e);
