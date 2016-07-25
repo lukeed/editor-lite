@@ -13,11 +13,11 @@ var nodeType = 'nodeName';
 var nodeParent = 'parentNode';
 
 var keys = {
-	u: 'u',
-	b: 'b',
-	i: 'i',
-	']': 'in',
-	'[': 'out',
+	85: 'u',
+	66: 'b',
+	73: 'i',
+	221: 'in',
+	219: 'out',
 	// shift + code
 	s55: 'ol',
 	s56: 'ul',
@@ -281,14 +281,16 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onKeydown: function (e) {
+		var code = e.keyCode || e.which;
+
 		if (e.metaKey && e[keyID] !== 'Meta') {
 			// find a shortcut w/ this key
-			var k = e.shiftKey ? ('s' + e.keyCode) : e.key;
+			var k = e.shiftKey ? ('s' + code) : code;
 			this.runCommand(keys[k], e);
 		}
 
 		// check if entering a new, empty line
-		if (e.keyCode === 13) {
+		if (code === 13) {
 			var node = domsel.getRange().startContainer;
 			if (node[nodeType] === 'DIV' || (node[nodeType] === '#text' && (node[nodeParent][nodeType] === 'DIV' || node[nodeParent][nodeParent][nodeType] === 'DIV'))) {
 				// insert new or wrap with `<p>`
