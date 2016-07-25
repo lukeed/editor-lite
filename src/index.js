@@ -284,6 +284,15 @@ Editor.prototype = {
 			this.runCommand(keys[k], e);
 		}
 
+		// check if entering a new, empty line
+		if (e.keyCode === 13) {
+			var node = domsel.getRange().startContainer;
+			if (node.nodeName === 'DIV' || (node.nodeName === '#text' && node.parentNode.nodeName === 'DIV')) {
+				// insert new or wrap with `<p>`
+				execute('formatBlock', null, 'p');
+			}
+		}
+
 		// if auto(sav|sync)ing, emit event
 		this.opts.autoSave && this.emit('autosave');
 		this.opts.autoSync && this.emit('autosync');
