@@ -1,6 +1,6 @@
 {
   "name": "editor-lite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The lightest WYSIWYG cross-browser editor. (IE9+)",
   "license": "MIT",
   "repository": "lukeed/editor-lite",
@@ -38,7 +38,11 @@
     "xo": "^0.14.0"
   },
   "xo": {
-    "envs": ["browser", "node", "amd"],
+    "envs": [
+      "browser",
+      "node",
+      "amd"
+    ],
     "rules": {
       "no-unused-expressions": 1,
       "quote-props": 1,
