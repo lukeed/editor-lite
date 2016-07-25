@@ -8,6 +8,8 @@ var slice = [].slice;
 var each = [].forEach;
 var acts = 'click touch';
 var attr = 'contentEditable';
+var nodeType = 'nodeName';
+var nodeParent = 'parentNode';
 
 var keys = {
 	u: 'u',
@@ -287,7 +289,7 @@ Editor.prototype = {
 		// check if entering a new, empty line
 		if (e.keyCode === 13) {
 			var node = domsel.getRange().startContainer;
-			if (node.nodeName === 'DIV' || (node.nodeName === '#text' && node.parentNode.nodeName === 'DIV')) {
+			if (node[nodeType] === 'DIV' || (node[nodeType] === '#text' && (node[nodeParent][nodeType] === 'DIV' || node[nodeParent][nodeParent][nodeType] === 'DIV'))) {
 				// insert new or wrap with `<p>`
 				execute('formatBlock', null, 'p');
 			}
