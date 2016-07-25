@@ -266,7 +266,7 @@ function Editor(el, opts) {
 		on(btn, acts, bcb);
 	});
 
-	self.buttons = btns;
+	this.buttons = btns;
 }
 
 Editor.prototype = {
@@ -472,8 +472,8 @@ Editor.prototype = {
 	 */
 	cleanHTML: function () {
 		return this.getHTML()
-			// .replace(/[\s]style="[^"]*"/gi, '') // remove style attrs
-			// .replace(/<[\/]?span>/gi, '') // remove plain `<span>` tags
+			.replace(/[\s]style="[^"]*"/gi, '') // remove style attrs
+			.replace(/<[\/]?span>/gi, '') // remove plain `<span>` tags
 			.replace(/\n|<br[\/]?>/g, '') // newline / carriage return
 			.replace(/div>/gi, 'p>') // replace all divs with <p> tags
 			.replace(/<p><\/p>/g, '') // empty <p> tags
