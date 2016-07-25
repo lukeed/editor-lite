@@ -474,7 +474,8 @@ Editor.prototype = {
 			// .replace(/[\s]style="[^"]*"/gi, '') // remove style attrs
 			// .replace(/<[\/]?span>/gi, '') // remove plain `<span>` tags
 			.replace(/\n|<br[\/]?>/g, '') // newline / carriage return
-			.replace(/<div><\/div>|<p><\/p>/g, '') // empty div/p tags
+			.replace(/div>/gi, 'p>') // replace all divs with <p> tags
+			.replace(/<p><\/p>/g, '') // empty <p> tags
 			.replace(/&nbsp;/g, ' '); // &nbsp; ==> ' '
 	},
 
