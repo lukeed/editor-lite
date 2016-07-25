@@ -185,7 +185,7 @@ function execute() {
 function Editor(el, opts) {
 	if (el.nodeType !== 1) {
 		throw new Error('Must provide a valid Element Node.');
-	} else if (!(attr in doc.body)) {
+	} else if (!('contentEditable' in doc.body)) {
 		throw new Error('Your browser does not support the `contenteditable` attribute. For more: http://caniuse.com/#feat=contenteditable');
 	}
 
