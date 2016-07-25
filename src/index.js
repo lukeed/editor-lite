@@ -168,6 +168,23 @@ function keyEvent(e) {
 }
 
 /**
+ * Check if an item is N-levels deep within a `<div>`.
+ * @param  {Node}     el
+ * @param  {Integer}  levels
+ * @return {Boolean}
+ */
+function isWithinDIV(el, levels) {
+	while (el[nodeParent] && levels) {
+		levels--;
+		el = el[nodeParent];
+		if (el[nodeType] === 'DIV') {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
  * Execute a Document Command
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
  * @return {Boolean}     If was applied.
@@ -292,9 +309,8 @@ Editor.prototype = {
 		// check if entering a new, empty line
 		if (code === 13) {
 			var node = domsel.getRange().startContainer;
-			if (node[nodeType] === 'DIV' || (node[nodeType] === '#text' && (node[nodeParent][nodeType] === 'DIV' || node[nodeParent][nodeParent][nodeType] === 'DIV'))) {
-				// insert new or wrap with `<p>`
-				execute('formatBlock', null, 'p');
+			if (node[nodeType] === 'DIV' || (node[nodeType] === '#text' && isWithinDIV(node, 4))) {
+				execute('formatBlock', 0, 'p'); // insert new or wrap with `<p>`
 			}
 		}
 
