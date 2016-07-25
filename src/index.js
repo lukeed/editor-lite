@@ -28,21 +28,21 @@ var keys = {
 };
 
 var cmds = {
-	ul: ['insertUnorderedList'],
-	ol: ['insertOrderedList'],
-	u: ['underline', 1], // `1` = requires selection
-	b: ['bold', 1],
-	i: ['italic', 1],
-	a: ['createLink', 1],
-	sub: ['subscript', 1],
-	sup: ['superscript', 1],
-	strike: ['strikeThrough', 1],
-	center: ['justifyCenter'],
-	right: ['justifyRight'],
-	left: ['justifyLeft'],
-	full: ['justifyFull'],
-	out: ['outdent'],
-	in: ['indent']
+	ul: 'insertUnorderedList',
+	ol: 'insertOrderedList',
+	u: 'underline', // `1` = requires selection
+	b: 'bold',
+	i: 'italic',
+	a: 'createLink',
+	sub: 'subscript',
+	sup: 'superscript',
+	strike: 'strikeThrough',
+	center: 'justifyCenter',
+	right: 'justifyRight',
+	left: 'justifyLeft',
+	full: 'justifyFull',
+	out: 'outdent',
+	in: 'indent'
 };
 // insertImage
 // insertHTML
@@ -412,9 +412,9 @@ Editor.prototype = {
 		// found cmd, cancel native handler
 		e && e.preventDefault();
 		// expand the caret if cmd requires a selection & non active
-		cmd[1] && !this.hasSelection() && this.expandSelection();
+		// cmd[1] && !this.hasSelection() && this.expandSelection();
 		// run the command
-		execute(cmd[0]);
+		execute(cmd);
 	},
 
 	insertLink: function () {
