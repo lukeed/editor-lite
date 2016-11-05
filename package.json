@@ -1,6 +1,6 @@
 {
   "name": "editor-lite",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "The lightest WYSIWYG cross-browser editor. (IE9+)",
   "license": "MIT",
   "repository": "lukeed/editor-lite",
