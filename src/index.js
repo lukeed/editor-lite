@@ -271,6 +271,15 @@ function Editor(el, opts) {
 
 Editor.prototype = {
 	/**
+	 * Ensure there's always at least a `<p>` tag
+	 */
+	addNewLine: function () {
+		if (!this.cleanHTML().trim().length) {
+			this.setHTML('<p><br></p>');
+		}
+	},
+
+	/**
 	 * Callback for `blur` event.
 	 * @param  {Event} e
 	 */
@@ -289,6 +298,7 @@ Editor.prototype = {
 	 * @param  {Event} e
 	 */
 	onFocus: function (e) {
+		this.addNewLine();
 		this.hasSelection() && this.showAirbar();
 		this.opts.onFocus(e);
 	},
